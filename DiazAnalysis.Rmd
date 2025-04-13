@@ -348,4 +348,310 @@ plot_24
 plot_25
 ```
 
-One interesting takeaway from these plots is the differentiation in the pitch usage. Diaz is less reliant on his slider compared to his successful 2022 season, and his fastball has begun to creep up higher in the zone. For one, this could be a sign of less successful tunneling - if there is a divergence between pitches up in the zone
+One interesting takeaway from these plots is the differentiation in the pitch usage. Diaz is less reliant on his slider compared to his successful 2022 season, and his fastball has begun to creep up higher in the zone. With the fastball climbing up in the zone, his approach seems to be changing - instead of tunneling effectively in the left half of the zone with fastball and slider, he seems to just be trying to blow fastballs by hitters up and away. I also think that this shift is related to changes in control. Diaz has noticeably been working from behind in the count much more often as of late - from [Baseball Savant](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb&season=2025), Diaz's FirstPitchStrike% by season looks like 71.4% (2022), 63.0% (2024), and 50.0% (2025, through April 12 games). Since this is a big dropoff and can explain the tendency for more fastballs, I'd like to look at how he has approached 0-0 counts and if there's a difference over the years.
+
+```{r}
+#set counts variable in new df
+diaz_counts <- diaz %>%
+  mutate(count = paste0(balls, "-", strikes))
+#filter for 0-0 count (what we want just for now)
+diaz_00 <- diaz_counts %>%
+  filter(count == "0-0")
+
+#2022
+diaz_ff_22_00 <- diaz_00 %>%
+  filter(game_year == "2022")
+
+freq_ff_22_00 <- diaz_ff_22_00 %>%
+  group_by(pitch_type) %>%
+  tally()
+
+total <- sum(freq_ff_22_00$n)
+
+freq_ff_22_00$usage_percent <- round((freq_ff_22_00$n / total)*100, digits = 0)
+freq_ff_22_00 <- subset(freq_ff_22_00, select = -c(n))
+
+diaz_ff_22_00 <- merge(diaz_ff_22_00, freq_ff_22_00)
+
+diaz_ff_22_00 <- diaz_ff_22_00 %>%
+  filter(pitch_type == "FF")
+
+ff_total_22_00 <- diaz_ff_22_00 %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste(diaz_ff_22_00$usage_percent,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_22_00 <- diaz_00 %>%
+  filter(game_year == "2022")
+
+freq_sl_22_00 <- diaz_sl_22_00 %>%
+  group_by(pitch_type) %>%
+  tally()
+
+total <- sum(freq_sl_22_00$n)
+
+freq_sl_22_00$usage_percent <- round((freq_sl_22_00$n / total)*100, digits = 0)
+freq_sl_22_00 <- subset(freq_sl_22_00, select = -c(n))
+
+diaz_sl_22_00 <- merge(diaz_sl_22_00, freq_sl_22_00)
+
+diaz_sl_22_00 <- diaz_sl_22_00 %>%
+  filter(pitch_type == "SL")
+
+sl_total_22_00 <- diaz_sl_22_00 %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste(diaz_sl_22_00$usage_percent,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#2024
+diaz_ff_24_00 <- diaz_00 %>%
+  filter(game_year == "2024")
+
+freq_ff_24_00 <- diaz_ff_24_00 %>%
+  group_by(pitch_type) %>%
+  tally()
+
+total <- sum(freq_ff_24_00$n)
+
+freq_ff_24_00$usage_percent <- round((freq_ff_24_00$n / total)*100, digits = 0)
+freq_ff_24_00 <- subset(freq_ff_24_00, select = -c(n))
+
+diaz_ff_24_00 <- merge(diaz_ff_24_00, freq_ff_24_00)
+
+diaz_ff_24_00 <- diaz_ff_24_00 %>%
+  filter(pitch_type == "FF")
+
+ff_total_24_00 <- diaz_ff_24_00 %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste(diaz_ff_24_00$usage_percent,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_24_00 <- diaz_00 %>%
+  filter(game_year == "2024")
+
+freq_sl_24_00 <- diaz_sl_24_00 %>%
+  group_by(pitch_type) %>%
+  tally()
+
+total <- sum(freq_sl_24_00$n)
+
+freq_sl_24_00$usage_percent <- round((freq_sl_24_00$n / total)*100, digits = 0)
+freq_sl_24_00 <- subset(freq_sl_24_00, select = -c(n))
+
+diaz_sl_24_00 <- merge(diaz_sl_24_00, freq_sl_24_00)
+
+diaz_sl_24_00 <- diaz_sl_24_00 %>%
+  filter(pitch_type == "SL")
+
+sl_total_24_00 <- diaz_sl_24_00 %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste(diaz_sl_24_00$usage_percent,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#2025
+diaz_ff_25_00 <- diaz_00 %>%
+  filter(game_year == "2025")
+
+freq_ff_25_00 <- diaz_ff_25_00 %>%
+  group_by(pitch_type) %>%
+  tally()
+
+total <- sum(freq_ff_25_00$n)
+
+freq_ff_25_00$usage_percent <- round((freq_ff_25_00$n / total)*100, digits = 0)
+freq_ff_25_00 <- subset(freq_ff_25_00, select = -c(n))
+
+diaz_ff_25_00 <- merge(diaz_ff_25_00, freq_ff_25_00)
+
+diaz_ff_25_00 <- diaz_ff_25_00 %>%
+  filter(pitch_type == "FF")
+
+ff_total_25_00 <- diaz_ff_25_00 %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste(diaz_ff_25_00$usage_percent,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_25_00 <- diaz_00 %>%
+  filter(game_year == "2025")
+
+freq_sl_25_00 <- diaz_sl_25_00 %>%
+  group_by(pitch_type) %>%
+  tally()
+
+total <- sum(freq_sl_25_00$n)
+
+freq_sl_25_00$usage_percent <- round((freq_sl_25_00$n / total)*100, digits = 0)
+freq_sl_25_00 <- subset(freq_sl_25_00, select = -c(n))
+
+diaz_sl_25_00 <- merge(diaz_sl_25_00, freq_sl_25_00)
+
+diaz_sl_25_00 <- diaz_sl_25_00 %>%
+  filter(pitch_type == "SL")
+
+sl_total_25_00 <- diaz_sl_25_00 %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste(diaz_sl_25_00$usage_percent,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#Plots
+plot_22 <- ggarrange(ff_total_22_00,
+          sl_total_22_00, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2022, 0-0", 
+                                        color = "red", face = "italic", size = 14))
+plot_24 <- ggarrange(ff_total_24_00,
+          sl_total_24_00, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2024, 0-0", 
+                                        color = "red", face = "italic", size = 14))
+
+plot_25 <- ggarrange(ff_total_25_00,
+          sl_total_25_00, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2025, 0-0", 
+                                        color = "red", face = "italic", size = 14))
+
+plot_22
+plot_24
+plot_25
+```
+
+The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, the difference between 2022 and 2024 shows that his fastball is less clustered in the zone and his command has shifted upwards, even with the slider. {What it shows}.
+
+Something major that should be focused on is Pitch Tempo, or the time between pitches. Diaz missed 2023 with {injury}, which was the same year that the pitch clock was implemented into MLB games to speed up pitchers, hitters, and overall game time. {Say what the stats show}.
+
+{PLOT?}
+
+{Whiff and chase rates in 0-0, percent ahead/behind in count, usages ahead, etc}
