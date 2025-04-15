@@ -650,8 +650,23 @@ plot_25
 
 The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, the difference between 2022 and 2024 shows that his fastball is less clustered in the zone and his command has shifted upwards, even with the slider. {What it shows}.
 
-Something major that should be focused on is Pitch Tempo, or the time between pitches. Diaz missed 2023 with {injury}, which was the same year that the pitch clock was implemented into MLB games to speed up pitchers, hitters, and overall game time. {Say what the stats show}.
+```{r}
+#Look at whiffs specifically
+diaz_00 <- diaz_00 %>%
+  mutate(whiff = case_when(
+    description == "swinging_strike" ~ 1,
+    .default = 0
+  ),
+  in_zone = case_when(plate_x < left | plate_x > right | 
+                            plate_z < bottom | plate_z > top ~ 0,
+                      .default = 1),
+  chase = case_when(!(description %in% c("ball", "called_strike", "blocked_ball", "hit_by_pitch")) & in_zone == "0" ~ 1,
+                    .default = 0))
+  
+```
 
-{PLOT?}
+{Whiff and chase rates in 0-0, percent ahead/behind in count, usages ahead, etc}.
 
-{Whiff and chase rates in 0-0, percent ahead/behind in count, usages ahead, etc}
+Something major that should be focused on is Pitch Tempo, or the time between pitches. Diaz missed 2023 with a knee injury, which was the same year that the pitch clock was implemented into MLB games to speed up pitchers, hitters, and overall game time. From 2022 to 2024/2025, Diaz has definitely had to speed up - his [average time between pitches](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb&season=2025#pitch-tempo) in 2022 was 17.4 seconds, and in 2024 it was 13.8 (13.5 in 2025). With a "Fast" pitch tempo being where the pitcher takes 15 seconds or less between pitches, Diaz's Fast% has skyrocketed from 24.4% in 2022 to 71.6% in 2024 (63.6% in 2025). With a faster pace, it's possible Diaz has been more comfortable finding his fastball rather than his slider, which may explain its increased prominence.
+
+{PLOT?}.
