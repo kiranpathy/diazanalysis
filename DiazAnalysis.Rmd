@@ -666,23 +666,17 @@ diaz_00 <- diaz_00 %>%
 #chases
 diaz_ff_22_00 <- diaz_00 %>%
   filter(game_year == "2022",
-         chase == 1)
+         pitch_type == "FF")
 
-freq_ff_22_00 <- diaz_ff_22_00 %>%
-  group_by(pitch_type) %>%
-  tally()
+freq_ff_22_00_tot <- nrow(diaz_ff_22_00)
+freq_ff_22_00_chase <- nrow(filter(diaz_ff_22_00, chase == 1))
 
-total <- sum(freq_ff_22_00$n)
+percent_ff_22_00_chase <- round((freq_ff_22_00_chase / freq_ff_22_00_tot) * 100, 1)
 
-freq_ff_22_00$usage_percent <- round((freq_ff_22_00$n / total)*100, digits = 0)
-freq_ff_22_00 <- subset(freq_ff_22_00, select = -c(n))
+diaz_ff_22_00_chase <- diaz_ff_22_00 %>%
+  filter(chase == 1)
 
-diaz_ff_22_00 <- merge(diaz_ff_22_00, freq_ff_22_00)
-
-diaz_ff_22_00 <- diaz_ff_22_00 %>%
-  filter(pitch_type == "FF")
-
-ff_total_22_00 <- diaz_ff_22_00 %>%
+ff_total_22_00 <- diaz_ff_22_00_chase %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
   geom_point(aes(color = pitch_type), size = 1) +
   geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
@@ -700,7 +694,7 @@ ff_total_22_00 <- diaz_ff_22_00 %>%
   geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
   xlim(-3,3) + ylim(0, 5) +
   coord_fixed() +
-  ggtitle(paste("Fastball"), paste(diaz_ff_22_00$usage_percent,"%")) +
+  ggtitle(paste("Fastball"), paste("0-0 Chase Percentage:", percent_ff_22_00_chase,"%")) +
   theme(legend.position = "none",
         plot.title = element_text(color = "black", size = 15, face = "bold"),
         axis.title.x = element_blank(),
@@ -709,26 +703,19 @@ ff_total_22_00 <- diaz_ff_22_00 %>%
         panel.background = element_blank(),
         panel.border = element_rect(color = "black", size = 1.5, fill = NA))
 
-
 diaz_sl_22_00 <- diaz_00 %>%
   filter(game_year == "2022",
-         chase == 1)
+         pitch_type == "SL")
 
-freq_sl_22_00 <- diaz_sl_22_00 %>%
-  group_by(pitch_type) %>%
-  tally()
+freq_sl_22_00_tot <- nrow(diaz_sl_22_00)
+freq_sl_22_00_chase <- nrow(filter(diaz_sl_22_00, chase == 1))
 
-total <- sum(freq_sl_22_00$n)
+percent_sl_22_00_chase <- round((freq_sl_22_00_chase / freq_sl_22_00_tot) * 100, 1)
 
-freq_sl_22_00$usage_percent <- round((freq_sl_22_00$n / total)*100, digits = 0)
-freq_sl_22_00 <- subset(freq_sl_22_00, select = -c(n))
+diaz_sl_22_00_chase <- diaz_sl_22_00 %>%
+  filter(chase == 1)
 
-diaz_sl_22_00 <- merge(diaz_sl_22_00, freq_sl_22_00)
-
-diaz_sl_22_00 <- diaz_sl_22_00 %>%
-  filter(pitch_type == "SL")
-
-sl_total_22_00 <- diaz_sl_22_00 %>%
+sl_total_22_00 <- diaz_sl_22_00_chase %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
   geom_point(aes(color = pitch_type), size = 1) +
   geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
@@ -746,7 +733,7 @@ sl_total_22_00 <- diaz_sl_22_00 %>%
   geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
   xlim(-3,3) + ylim(0, 5) +
   coord_fixed() +
-  ggtitle(paste("Slider"), paste(diaz_sl_22_00$usage_percent,"%")) +
+  ggtitle(paste("Slider"), paste("0-0 Chase Percentage:", percent_sl_22_00_chase,"%")) +
   theme(legend.position = "none",
         plot.title = element_text(color = "black", size = 15, face = "bold"),
         axis.title.x = element_blank(),
@@ -758,23 +745,17 @@ sl_total_22_00 <- diaz_sl_22_00 %>%
 #2024
 diaz_ff_24_00 <- diaz_00 %>%
   filter(game_year == "2024",
-         chase == 1)
+         pitch_type == "FF")
 
-freq_ff_24_00 <- diaz_ff_24_00 %>%
-  group_by(pitch_type) %>%
-  tally()
+freq_ff_24_00_tot <- nrow(diaz_ff_24_00)
+freq_ff_24_00_chase <- nrow(filter(diaz_ff_24_00, chase == 1))
 
-total <- sum(freq_ff_24_00$n)
+percent_ff_24_00_chase <- round((freq_ff_24_00_chase / freq_ff_24_00_tot) * 100, 1)
 
-freq_ff_24_00$usage_percent <- round((freq_ff_24_00$n / total)*100, digits = 0)
-freq_ff_24_00 <- subset(freq_ff_24_00, select = -c(n))
+diaz_ff_24_00_chase <- diaz_ff_24_00 %>%
+  filter(chase == 1)
 
-diaz_ff_24_00 <- merge(diaz_ff_24_00, freq_ff_24_00)
-
-diaz_ff_24_00 <- diaz_ff_24_00 %>%
-  filter(pitch_type == "FF")
-
-ff_total_24_00 <- diaz_ff_24_00 %>%
+ff_total_24_00 <- diaz_ff_24_00_chase %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
   geom_point(aes(color = pitch_type), size = 1) +
   geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
@@ -792,7 +773,7 @@ ff_total_24_00 <- diaz_ff_24_00 %>%
   geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
   xlim(-3,3) + ylim(0, 5) +
   coord_fixed() +
-  ggtitle(paste("Fastball"), paste(diaz_ff_24_00$usage_percent,"%")) +
+  ggtitle(paste("Fastball"), paste("0-0 Chase Percentage:", percent_ff_24_00_chase,"%")) +
   theme(legend.position = "none",
         plot.title = element_text(color = "black", size = 15, face = "bold"),
         axis.title.x = element_blank(),
@@ -804,23 +785,17 @@ ff_total_24_00 <- diaz_ff_24_00 %>%
 
 diaz_sl_24_00 <- diaz_00 %>%
   filter(game_year == "2024",
-         chase == 1)
+         pitch_type == "SL")
 
-freq_sl_24_00 <- diaz_sl_24_00 %>%
-  group_by(pitch_type) %>%
-  tally()
+freq_sl_24_00_tot <- nrow(diaz_sl_24_00)
+freq_sl_24_00_chase <- nrow(filter(diaz_sl_24_00, chase == 1))
 
-total <- sum(freq_sl_24_00$n)
+percent_sl_24_00_chase <- round((freq_sl_24_00_chase / freq_sl_24_00_tot) * 100, 1)
 
-freq_sl_24_00$usage_percent <- round((freq_sl_24_00$n / total)*100, digits = 0)
-freq_sl_24_00 <- subset(freq_sl_24_00, select = -c(n))
+diaz_sl_24_00_chase <- diaz_sl_24_00 %>%
+  filter(chase == 1)
 
-diaz_sl_24_00 <- merge(diaz_sl_24_00, freq_sl_24_00)
-
-diaz_sl_24_00 <- diaz_sl_24_00 %>%
-  filter(pitch_type == "SL")
-
-sl_total_24_00 <- diaz_sl_24_00 %>%
+sl_total_24_00 <- diaz_sl_24_00_chase %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
   geom_point(aes(color = pitch_type), size = 1) +
   geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
@@ -838,7 +813,7 @@ sl_total_24_00 <- diaz_sl_24_00 %>%
   geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
   xlim(-3,3) + ylim(0, 5) +
   coord_fixed() +
-  ggtitle(paste("Slider"), paste(diaz_sl_24_00$usage_percent,"%")) +
+  ggtitle(paste("Slider"), paste("0-0 Chase Percentage:", percent_sl_24_00_chase,"%")) +
   theme(legend.position = "none",
         plot.title = element_text(color = "black", size = 15, face = "bold"),
         axis.title.x = element_blank(),
@@ -850,23 +825,17 @@ sl_total_24_00 <- diaz_sl_24_00 %>%
 #2025
 diaz_ff_25_00 <- diaz_00 %>%
   filter(game_year == "2025",
-         chase == 1)
+         pitch_type == "FF")
 
-freq_ff_25_00 <- diaz_ff_25_00 %>%
-  group_by(pitch_type) %>%
-  tally()
+freq_ff_25_00_tot <- nrow(diaz_ff_25_00)
+freq_ff_25_00_chase <- nrow(filter(diaz_ff_25_00, chase == 1))
 
-total <- sum(freq_ff_25_00$n)
+percent_ff_25_00_chase <- round((freq_ff_25_00_chase / freq_ff_25_00_tot) * 100, 1)
 
-freq_ff_25_00$usage_percent <- round((freq_ff_25_00$n / total)*100, digits = 0)
-freq_ff_25_00 <- subset(freq_ff_25_00, select = -c(n))
+diaz_ff_25_00_chase <- diaz_ff_25_00 %>%
+  filter(chase == 1)
 
-diaz_ff_25_00 <- merge(diaz_ff_25_00, freq_ff_25_00)
-
-diaz_ff_25_00 <- diaz_ff_25_00 %>%
-  filter(pitch_type == "FF")
-
-ff_total_25_00 <- diaz_ff_25_00 %>%
+ff_total_25_00 <- diaz_ff_25_00_chase %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
   geom_point(aes(color = pitch_type), size = 1) +
   geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
@@ -884,7 +853,7 @@ ff_total_25_00 <- diaz_ff_25_00 %>%
   geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
   xlim(-3,3) + ylim(0, 5) +
   coord_fixed() +
-  ggtitle(paste("Fastball"), paste(diaz_ff_25_00$usage_percent,"%")) +
+  ggtitle(paste("Fastball"), paste("0-0 Chase Percentage:", percent_ff_25_00_chase,"%")) +
   theme(legend.position = "none",
         plot.title = element_text(color = "black", size = 15, face = "bold"),
         axis.title.x = element_blank(),
@@ -896,23 +865,17 @@ ff_total_25_00 <- diaz_ff_25_00 %>%
 
 diaz_sl_25_00 <- diaz_00 %>%
   filter(game_year == "2025",
-         chase == 1)
+         pitch_type == "SL")
 
-freq_sl_25_00 <- diaz_sl_25_00 %>%
-  group_by(pitch_type) %>%
-  tally()
+freq_sl_25_00_tot <- nrow(diaz_sl_25_00)
+freq_sl_25_00_chase <- nrow(filter(diaz_sl_25_00, chase == 1))
 
-total <- sum(freq_sl_25_00$n)
+percent_sl_25_00_chase <- round((freq_sl_25_00_chase / freq_sl_25_00_tot) * 100, 1)
 
-freq_sl_25_00$usage_percent <- round((freq_sl_25_00$n / total)*100, digits = 0)
-freq_sl_25_00 <- subset(freq_sl_25_00, select = -c(n))
+diaz_sl_25_00_chase <- diaz_sl_25_00 %>%
+  filter(chase == 1)
 
-diaz_sl_25_00 <- merge(diaz_sl_25_00, freq_sl_25_00)
-
-diaz_sl_25_00 <- diaz_sl_25_00 %>%
-  filter(pitch_type == "SL")
-
-sl_total_25_00 <- diaz_sl_25_00 %>%
+sl_total_25_00 <- diaz_sl_25_00_chase %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
   geom_point(aes(color = pitch_type), size = 1) +
   geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
@@ -930,7 +893,7 @@ sl_total_25_00 <- diaz_sl_25_00 %>%
   geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
   xlim(-3,3) + ylim(0, 5) +
   coord_fixed() +
-  ggtitle(paste("Slider"), paste(diaz_sl_25_00$usage_percent,"%")) +
+  ggtitle(paste("Slider"), paste("0-0 Chase Percentage:", percent_sl_25_00_chase,"%")) +
   theme(legend.position = "none",
         plot.title = element_text(color = "black", size = 15, face = "bold"),
         axis.title.x = element_blank(),
@@ -966,7 +929,7 @@ Something major that should be focused on is Pitch Tempo, or the time between pi
 
 {PLOT?}.\
 
-# Recommendations
+# Summary/Recommendations
 
 -   Bring the fastball down and tunnel with the slider
 
