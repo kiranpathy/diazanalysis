@@ -6,7 +6,7 @@ date: "2025-04-13"
 
 # Intro
 
-This project will be an analysis into Edwin Diaz across 2022, 2024, and 2025 seasons (so far), looking into his decline in effectiveness and his changing approach. While many metrics would indicate a strong 2024 campaign, he was not nearly as effective as in his phenomenal 2022 season, and his 2025 season has gotten off to a troubling start (NOTE: this is being made with data as of 4/13/2025, 5.2 IP / 6 G into the season for Diaz).
+This project will be an analysis into Edwin Diaz across 2022, 2024, and 2025 seasons (so far), looking into his decline in effectiveness and his changing approach. His 2022 season was historical, and while his metrics from 2024 indicate a strong campaign, his 2025 season has gotten off to a troubling start (NOTE: this is being made with data as of 4/13/2025, 5.2 IP / 6 G into the season for Diaz).
 
 ```{r}
 library(plyr)
@@ -28,9 +28,12 @@ library(reactable)
 library(lubridate)
 library(ggpubr)
 library(paletteer)
+library(knitr)
 ```
 
 # Data and Plots
+
+Before discussing, it's important to look into some relevant ready-available metrics to evaluate Diaz's 2022, 2024 and 2025 seasons in comparison and to understand why there are concerns.
 
 First load in data from the three seasons in question and define strike zone dimensions and making proper adjustments (make it from pitcher's view).
 
@@ -352,10 +355,10 @@ One interesting takeaway from these plots is the differentiation in the pitch us
 
 ```{r}
 #set counts variable in new df
-diaz_counts <- diaz %>%
+diaz <- diaz %>%
   mutate(count = paste0(balls, "-", strikes))
 #filter for 0-0 count (what we want just for now)
-diaz_00 <- diaz_counts %>%
+diaz_00 <- diaz %>%
   filter(count == "0-0")
 
 #2022
@@ -648,11 +651,11 @@ plot_24
 plot_25
 ```
 
-The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, the difference between 2022 and 2024 shows that his fastball is less clustered in the zone and his command has shifted upwards, even with the slider. {What it shows}.
+The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, after 2022 his fastball seemed to be trending up in the zone further and his slider in 2025 is hitting the wrong side of the plate (inside on RHH). {What it shows}.
 
 ```{r}
 #Look at whiffs and chases
-diaz_00 <- diaz_00 %>%
+diaz <- diaz %>%
   mutate(whiff = case_when(
     description == "swinging_strike" ~ 1,
     .default = 0
@@ -664,6 +667,9 @@ diaz_00 <- diaz_00 %>%
                     .default = 0))
 
 #chases
+diaz_00 <- diaz %>%
+  filter(count == "0-0")
+
 diaz_ff_22_00 <- diaz_00 %>%
   filter(game_year == "2022",
          pitch_type == "FF")
@@ -923,11 +929,25 @@ plot_25
   
 ```
 
-{Whiff and chase rates in 0-0, percent ahead/behind in count, usages ahead, etc}.
+```{r}
+#Overall chase/whiff stats
+diaz <- diaz %>%
+  mutate(count_type = case_when(
+    count %in% c("1-1", "2-2") ~ "even",
+    count %in% c("0-1", "0-2", "1-2") ~ "ahead",
+    count %in% c("1-0", "2-0", "3-0", "2-1", "3-1", "3-2") ~ "behind"))
+
+diaz_summary <- diaz %>%
+  group_by(game_year, count_type, pitch_type) %>%
+```
+
+{Whiff and chase rates in 0-0, percent ahead/behind in count, usages ahead, etc - note even though 2022 was good, Whiff% was way down - overall chase is down from 2022 (both 2024 and 2025 are close to each other though)}.
 
 Something major that should be focused on is Pitch Tempo, or the time between pitches. Diaz missed 2023 with a knee injury, which was the same year that the pitch clock was implemented into MLB games to speed up pitchers, hitters, and overall game time. From 2022 to 2024/2025, Diaz has definitely had to speed up - his [average time between pitches](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb&season=2025#pitch-tempo) in 2022 was 17.4 seconds, and in 2024 it was 13.8 (13.5 in 2025). With a "Fast" pitch tempo being where the pitcher takes 15 seconds or less between pitches, Diaz's Fast% has skyrocketed from 24.4% in 2022 to 71.6% in 2024 (63.6% in 2025). With a faster pace, it's possible Diaz has been more comfortable finding his fastball rather than his slider, which may explain its increased prominence.
 
-{PLOT?}.\
+{PLOT?}.
+
+{HardHit% is up - where do these pitches come from? - PLOT}.\
 
 # Summary/Recommendations
 
@@ -935,4 +955,4 @@ Something major that should be focused on is Pitch Tempo, or the time between pi
 
 -   Practice pacing, especially early in counts
 
--   
+-   Get the slider back to the left side of the plate - this is where chases come from
