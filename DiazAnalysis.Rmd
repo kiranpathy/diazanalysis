@@ -957,13 +957,15 @@ diaz_summary %>%
   )
 ```
 
-{Whiff and chase rates in 0-0, percent ahead/behind in count, usages ahead, etc - note even though 2022 was good, Whiff% was way down - overall chase is down from 2022 (both 2024 and 2025 are close to each other though)}.
+{Comment on the DT}.
 
 Something major that should be focused on is Pitch Tempo, or the time between pitches. Diaz missed 2023 with a knee injury, which was the same year that the pitch clock was implemented into MLB games to speed up pitchers, hitters, and overall game time. From 2022 to 2024/2025, Diaz has definitely had to speed up - his [average time between pitches](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb&season=2025#pitch-tempo) in 2022 was 17.4 seconds, and in 2024 it was 13.8 (13.5 in 2025). With a "Fast" pitch tempo being where the pitcher takes 15 seconds or less between pitches, Diaz's Fast% has skyrocketed from 24.4% in 2022 to 71.6% in 2024 (63.6% in 2025). With a faster pace, it's possible Diaz has been more comfortable finding his fastball rather than his slider, which may explain its increased prominence.
 
 {PLOT?}.
 
-{HardHit% is up - where do these pitches come from? - PLOT}.\
+{HardHit% is up - where do these pitches come from? - PLOT, explain}.\
+
+{STOP HERE}.
 
 # Summary/Recommendations
 
