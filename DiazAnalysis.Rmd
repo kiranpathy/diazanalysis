@@ -931,6 +931,269 @@ plot_25
 ```
 
 ```{r}
+#whiffs in 0-0
+diaz_00 <- diaz %>%
+  filter(count == "0-0")
+
+diaz_ff_22_00 <- diaz_00 %>%
+  filter(game_year == "2022",
+         pitch_type == "FF")
+
+freq_ff_22_00_tot <- nrow(diaz_ff_22_00)
+freq_ff_22_00_whiff <- nrow(filter(diaz_ff_22_00, whiff == 1))
+
+percent_ff_22_00_whiff <- round((freq_ff_22_00_whiff / freq_ff_22_00_tot) * 100, 1)
+
+diaz_ff_22_00_whiff <- diaz_ff_22_00 %>%
+  filter(whiff == 1)
+
+ff_total_22_00 <- diaz_ff_22_00_whiff %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste("0-0 Whiff Percentage:", percent_ff_22_00_whiff,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+diaz_sl_22_00 <- diaz_00 %>%
+  filter(game_year == "2022",
+         pitch_type == "SL")
+
+freq_sl_22_00_tot <- nrow(diaz_sl_22_00)
+freq_sl_22_00_whiff <- nrow(filter(diaz_sl_22_00, whiff == 1))
+
+percent_sl_22_00_whiff <- round((freq_sl_22_00_whiff / freq_sl_22_00_tot) * 100, 1)
+
+diaz_sl_22_00_whiff <- diaz_sl_22_00 %>%
+  filter(whiff == 1)
+
+sl_total_22_00 <- diaz_sl_22_00_whiff %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste("0-0 Whiff Percentage:", percent_sl_22_00_whiff,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#2024
+diaz_ff_24_00 <- diaz_00 %>%
+  filter(game_year == "2024",
+         pitch_type == "FF")
+
+freq_ff_24_00_tot <- nrow(diaz_ff_24_00)
+freq_ff_24_00_whiff <- nrow(filter(diaz_ff_24_00, whiff == 1))
+
+percent_ff_24_00_whiff <- round((freq_ff_24_00_whiff / freq_ff_24_00_tot) * 100, 1)
+
+diaz_ff_24_00_whiff <- diaz_ff_24_00 %>%
+  filter(whiff == 1)
+
+ff_total_24_00 <- diaz_ff_24_00_whiff %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste("0-0 Whiff Percentage:", percent_ff_24_00_whiff,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_24_00 <- diaz_00 %>%
+  filter(game_year == "2024",
+         pitch_type == "SL")
+
+freq_sl_24_00_tot <- nrow(diaz_sl_24_00)
+freq_sl_24_00_whiff <- nrow(filter(diaz_sl_24_00, whiff == 1))
+
+percent_sl_24_00_whiff <- round((freq_sl_24_00_whiff / freq_sl_24_00_tot) * 100, 1)
+
+diaz_sl_24_00_whiff <- diaz_sl_24_00 %>%
+  filter(whiff == 1)
+
+sl_total_24_00 <- diaz_sl_24_00_whiff %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste("0-0 Whiff Percentage:", percent_sl_24_00_whiff,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#2025
+diaz_ff_25_00 <- diaz_00 %>%
+  filter(game_year == "2025",
+         pitch_type == "FF")
+
+freq_ff_25_00_tot <- nrow(diaz_ff_25_00)
+freq_ff_25_00_whiff <- nrow(filter(diaz_ff_25_00, whiff == 1))
+
+percent_ff_25_00_whiff <- round((freq_ff_25_00_whiff / freq_ff_25_00_tot) * 100, 1)
+
+diaz_ff_25_00_whiff <- diaz_ff_25_00 %>%
+  filter(whiff == 1)
+
+ff_total_25_00 <- diaz_ff_25_00_whiff %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste("0-0 Whiff Percentage:", percent_ff_25_00_whiff,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_25_00 <- diaz_00 %>%
+  filter(game_year == "2025",
+         pitch_type == "SL")
+
+freq_sl_25_00_tot <- nrow(diaz_sl_25_00)
+freq_sl_25_00_whiff <- nrow(filter(diaz_sl_25_00, whiff == 1))
+
+percent_sl_25_00_whiff <- round((freq_sl_25_00_whiff / freq_sl_25_00_tot) * 100, 1)
+
+diaz_sl_25_00_whiff <- diaz_sl_25_00 %>%
+  filter(whiff == 1)
+
+sl_total_25_00 <- diaz_sl_25_00_whiff %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = pitch_type), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste("0-0 Whiff Percentage:", percent_sl_25_00_whiff,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#Plots
+plot_22 <- ggarrange(ff_total_22_00,
+          sl_total_22_00, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2022, 0-0 Whiffs", 
+                                        color = "red", face = "italic", size = 14))
+plot_24 <- ggarrange(ff_total_24_00,
+          sl_total_24_00, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2024, 0-0 Whiffs", 
+                                        color = "red", face = "italic", size = 14))
+
+plot_25 <- ggarrange(ff_total_25_00,
+          sl_total_25_00, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2025, 0-0 Whiffs", 
+                                        color = "red", face = "italic", size = 14))
+
+plot_22
+plot_24
+plot_25
+```
+
+```{r}
 #Overall chase/whiff stats
 diaz <- diaz %>%
   mutate(count_type = case_when(
@@ -957,15 +1220,300 @@ diaz_summary %>%
   )
 ```
 
-{Comment on the DT}.
+{Comment on the two plots and DT}.
 
 Something major that should be focused on is Pitch Tempo, or the time between pitches. Diaz missed 2023 with a knee injury, which was the same year that the pitch clock was implemented into MLB games to speed up pitchers, hitters, and overall game time. From 2022 to 2024/2025, Diaz has definitely had to speed up - his [average time between pitches](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb&season=2025#pitch-tempo) in 2022 was 17.4 seconds, and in 2024 it was 13.8 (13.5 in 2025). With a "Fast" pitch tempo being where the pitcher takes 15 seconds or less between pitches, Diaz's Fast% has skyrocketed from 24.4% in 2022 to 71.6% in 2024 (63.6% in 2025). With a faster pace, it's possible Diaz has been more comfortable finding his fastball rather than his slider, which may explain its increased prominence.
 
 {PLOT?}.
 
-{HardHit% is up - where do these pitches come from? - PLOT, explain}.\
+One more area to check out is [HardHit%](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb#statcast-statistics)\*. In 2022, Diaz's HardHit% was 38.1% (49th percentile), in 2024 it was 30.3% (97th percentile), and in 2025 thus far it is 53.3% (9th percentile). The spike in 2024 and even the middling performance in 2022 compared with the rough start in 2025 begs the question of where this hard contact is coming from.
 
-{STOP HERE}.
+```{r}
+diaz <- diaz %>%
+  mutate(hardhit = case_when(
+    launch_speed >= 95 ~ 1,
+    .default = 0))
+
+diaz_summary <- diaz %>%
+  filter(!is.na(launch_speed)) %>%
+  group_by(game_year, count_type, pitch_type) %>%
+  summarize(
+    total = n(),
+    hardhit = sum(hardhit, na.rm = T),
+    hardhit_perc = round((hardhit / total) * 100, 1),
+  ) %>%
+  arrange(game_year, count_type, pitch_type)
+
+diaz_summary %>%
+  gt() %>%
+  tab_header(
+    title = "Diaz Hard Hit by Count Type"
+  )
+```
+
+```{r}
+#hardhit scatterplot - color by hard hit
+diaz_ff_22 <- diaz %>%
+  filter(game_year == "2022",
+         pitch_type == "FF")
+
+freq_ff_22_tot <- nrow(filter(diaz_ff_22, !is.na(launch_speed)))
+freq_ff_22_hardhit <- nrow(filter(diaz_ff_22, hardhit == 1))
+
+percent_ff_22_hardhit <- round((freq_ff_22_hardhit / freq_ff_22_tot) * 100, 1)
+
+diaz_ff_22_hardhit <- diaz_ff_22 %>%
+  filter(!is.na(launch_speed))
+
+ff_total_22 <- diaz_ff_22_hardhit %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = hardhit), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste("HardHit Percentage:", percent_ff_22_hardhit,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+diaz_sl_22 <- diaz %>%
+  filter(game_year == "2022",
+         pitch_type == "SL")
+
+freq_sl_22_tot <- nrow(filter(diaz_sl_22, !is.na(launch_speed)))
+freq_sl_22_hardhit <- nrow(filter(diaz_sl_22, hardhit == 1))
+
+percent_sl_22_hardhit <- round((freq_sl_22_hardhit / freq_sl_22_tot) * 100, 1)
+
+diaz_sl_22_hardhit <- diaz_sl_22 %>%
+  filter(!is.na(launch_speed))
+
+sl_total_22 <- diaz_sl_22_hardhit %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = hardhit), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste("HardHit Percentage:", percent_sl_22_hardhit,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#2024
+diaz_ff_24 <- diaz %>%
+  filter(game_year == "2024",
+         pitch_type == "FF")
+
+freq_ff_24_tot <- nrow(filter(diaz_ff_24, !is.na(launch_speed)))
+freq_ff_24_hardhit <- nrow(filter(diaz_ff_24, hardhit == 1))
+
+percent_ff_24_hardhit <- round((freq_ff_24_hardhit / freq_ff_24_tot) * 100, 1)
+
+diaz_ff_24_hardhit <- diaz_ff_24 %>%
+  filter(!is.na(launch_speed))
+
+ff_total_24 <- diaz_ff_24_hardhit %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = hardhit), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste("HardHit Percentage:", percent_ff_24_hardhit,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_24 <- diaz %>%
+  filter(game_year == "2024",
+         pitch_type == "SL")
+
+freq_sl_24_tot <- nrow(filter(diaz_sl_24, !is.na(launch_speed)))
+freq_sl_24_hardhit <- nrow(filter(diaz_sl_24, hardhit == 1))
+
+percent_sl_24_hardhit <- round((freq_sl_24_hardhit / freq_sl_24_tot) * 100, 1)
+
+diaz_sl_24_hardhit <- diaz_sl_24 %>%
+  filter(!is.na(launch_speed))
+
+sl_total_24 <- diaz_sl_24_hardhit %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = hardhit), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste("HardHit Percentage:", percent_sl_24_hardhit,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#2025
+diaz_ff_25 <- diaz %>%
+  filter(game_year == "2025",
+         pitch_type == "FF")
+
+freq_ff_25_tot <- nrow(filter(diaz_ff_25, !is.na(launch_speed)))
+freq_ff_25_hardhit <- nrow(filter(diaz_ff_25, hardhit == 1))
+
+percent_ff_25_hardhit <- round((freq_ff_25_hardhit / freq_ff_25_tot) * 100, 1)
+
+diaz_ff_25_hardhit <- diaz_ff_25 %>%
+  filter(!is.na(launch_speed))
+
+ff_total_25 <- diaz_ff_25_hardhit %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = hardhit), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Fastball"), paste("HardHit Percentage:", percent_ff_25_hardhit,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+
+diaz_sl_25 <- diaz %>%
+  filter(game_year == "2025",
+         pitch_type == "SL")
+
+freq_sl_25_tot <- nrow(filter(diaz_sl_25, !is.na(launch_speed)))
+freq_sl_25_hardhit <- nrow(filter(diaz_sl_25, hardhit == 1))
+
+percent_sl_25_hardhit <- round((freq_sl_25_hardhit / freq_sl_25_tot) * 100, 1)
+
+diaz_sl_25_hardhit <- diaz_sl_25 %>%
+  filter(!is.na(launch_speed))
+
+sl_total_25 <- diaz_sl_25_hardhit %>%
+  ggplot(aes(x = plate_x, y = plate_z)) +
+  geom_point(aes(color = hardhit), size = 1) +
+  geom_segment(x = left, y = bottom, xend = right, yend = bottom) +
+  geom_segment(x = left, y = top, xend = right, yend = top) +
+  geom_segment(x = left, y = bottom, xend = left, yend = top) +
+  geom_segment(x = right, y = bottom, xend = right, yend = top) +
+  geom_segment(x = left, y = (bottom + height), xend = right, yend = (bottom + height)) +
+  geom_segment(x = left, y = (top - height), xend = right, yend = (top - height)) +
+  geom_segment(x = (left + width), y = bottom, xend = (left + width), yend = top) +
+  geom_segment(x = (right - width), y = bottom, xend = (right - width), yend = top) +
+  geom_segment(x = left, y = 0, xend = right, yend = 0) +
+  geom_segment(x = left, y = 0, xend = left, yend = (4.25/12)) +
+  geom_segment(x = left, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = (4.25/12), xend = 0, yend = (8.5/12)) +
+  geom_segment(x = right, y = 0, xend = right, yend = (4.25/12)) +
+  xlim(-3,3) + ylim(0, 5) +
+  coord_fixed() +
+  ggtitle(paste("Slider"), paste("HardHit Percentage:", percent_sl_25_hardhit,"%")) +
+  theme(legend.position = "none",
+        plot.title = element_text(color = "black", size = 15, face = "bold"),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        panel.border = element_rect(color = "black", size = 1.5, fill = NA))
+
+#Plots
+plot_22 <- ggarrange(ff_total_22,
+          sl_total_22, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2022, HardHit", 
+                                        color = "red", face = "italic", size = 14))
+plot_24 <- ggarrange(ff_total_24,
+          sl_total_24, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2024, HardHit", 
+                                        color = "red", face = "italic", size = 14))
+
+plot_25 <- ggarrange(ff_total_25,
+          sl_total_25, nrow = 1, ncol = 2) %>%
+  annotate_figure(plot, top = text_grob("Diaz 2025, HardHit", 
+                                        color = "red", face = "italic", size = 14))
+
+plot_22
+plot_24
+plot_25
+```
+
+**PERCENTAGES ARE OFF FOR THE PLOTS - NEED TO UPDATE!**
+
+{explain plot and DT}.
 
 # Summary/Recommendations
 
@@ -974,3 +1522,5 @@ Something major that should be focused on is Pitch Tempo, or the time between pi
 -   Practice pacing, especially early in counts
 
 -   Get the slider back to the left side of the plate - this is where chases come from
+
+\*HardHit defined as any hit 95MPH EV or higher
