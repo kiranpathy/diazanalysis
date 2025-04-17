@@ -1546,6 +1546,8 @@ final_plot
 
 {explain plot and DT}.
 
+**SAY SOMETHING ABOUT VELO DECLINE!**
+
 # Summary/Recommendations
 
 -   Bring the fastball down and tunnel with the slider
