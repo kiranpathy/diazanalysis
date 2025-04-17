@@ -655,7 +655,7 @@ plot_25
 The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, after 2022 his fastball seemed to be trending up in the zone further and his slider in 2025 is hitting the wrong side of the plate (inside on RHH). {What it shows}.
 
 ```{r}
-#Look at whiffs and chases
+#Overall chase/whiff stats
 diaz <- diaz %>%
   mutate(whiff = case_when(
     description == "swinging_strike" ~ 1,
@@ -665,8 +665,33 @@ diaz <- diaz %>%
                             plate_z < bottom | plate_z > top ~ 0,
                       .default = 1),
   chase = case_when(!(description %in% c("ball", "called_strike", "blocked_ball", "hit_by_pitch")) & in_zone == "0" ~ 1,
-                    .default = 0))
+                    .default = 0)) %>%
+  mutate(count_type = case_when(
+    count == "0-0" ~ "0-0",
+    count %in% c("1-1", "2-2") ~ "even",
+    count %in% c("0-1", "0-2", "1-2") ~ "ahead",
+    count %in% c("1-0", "2-0", "3-0", "2-1", "3-1", "3-2") ~ "behind"))
 
+diaz_summary <- diaz %>%
+  group_by(game_year, count_type, pitch_type) %>%
+  summarize(
+    total = n(),
+    chases = sum(chase, na.rm = T),
+    whiffs = sum(whiff, na.rm = T),
+    chase_perc = round((chases / total) * 100, 1),
+    whiff_perc = round((whiffs / total) * 100, 1)
+  ) %>%
+  arrange(game_year, count_type, pitch_type)
+
+diaz_summary %>%
+  gt() %>%
+  tab_header(
+    title = "Diaz Pitch Results by Count Type"
+  )
+```
+
+```{r}
+#Look at whiffs and chases
 #chases
 diaz_00 <- diaz %>%
   filter(count == "0-0")
@@ -1235,7 +1260,7 @@ diaz <- diaz %>%
     .default = 0))
 
 diaz_summary <- diaz %>%
-  filter(!is.na(launch_speed)) %>%
+  filter(!is.na(launch_speed), description == "hit_into_play") %>%
   group_by(game_year, count_type, pitch_type) %>%
   summarize(
     total = n(),
@@ -1257,13 +1282,13 @@ diaz_ff_22 <- diaz %>%
   filter(game_year == "2022",
          pitch_type == "FF")
 
-freq_ff_22_tot <- nrow(filter(diaz_ff_22, !is.na(launch_speed)))
-freq_ff_22_hardhit <- nrow(filter(diaz_ff_22, hardhit == 1))
+freq_ff_22_tot <- nrow(filter(diaz_ff_22, !is.na(launch_speed), description == "hit_into_play"))
+freq_ff_22_hardhit <- nrow(filter(diaz_ff_22, description == "hit_into_play", hardhit == 1))
 
 percent_ff_22_hardhit <- round((freq_ff_22_hardhit / freq_ff_22_tot) * 100, 1)
 
 diaz_ff_22_hardhit <- diaz_ff_22 %>%
-  filter(!is.na(launch_speed))
+  filter(!is.na(launch_speed), description == "hit_into_play")
 
 ff_total_22 <- diaz_ff_22_hardhit %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
@@ -1296,13 +1321,13 @@ diaz_sl_22 <- diaz %>%
   filter(game_year == "2022",
          pitch_type == "SL")
 
-freq_sl_22_tot <- nrow(filter(diaz_sl_22, !is.na(launch_speed)))
-freq_sl_22_hardhit <- nrow(filter(diaz_sl_22, hardhit == 1))
+freq_sl_22_tot <- nrow(filter(diaz_sl_22, !is.na(launch_speed), description == "hit_into_play"))
+freq_sl_22_hardhit <- nrow(filter(diaz_sl_22, description == "hit_into_play", hardhit == 1))
 
 percent_sl_22_hardhit <- round((freq_sl_22_hardhit / freq_sl_22_tot) * 100, 1)
 
 diaz_sl_22_hardhit <- diaz_sl_22 %>%
-  filter(!is.na(launch_speed))
+  filter(!is.na(launch_speed), description == "hit_into_play")
 
 sl_total_22 <- diaz_sl_22_hardhit %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
@@ -1336,13 +1361,13 @@ diaz_ff_24 <- diaz %>%
   filter(game_year == "2024",
          pitch_type == "FF")
 
-freq_ff_24_tot <- nrow(filter(diaz_ff_24, !is.na(launch_speed)))
-freq_ff_24_hardhit <- nrow(filter(diaz_ff_24, hardhit == 1))
+freq_ff_24_tot <- nrow(filter(diaz_ff_24, !is.na(launch_speed), description == "hit_into_play"))
+freq_ff_24_hardhit <- nrow(filter(diaz_ff_24, description == "hit_into_play", hardhit == 1))
 
 percent_ff_24_hardhit <- round((freq_ff_24_hardhit / freq_ff_24_tot) * 100, 1)
 
 diaz_ff_24_hardhit <- diaz_ff_24 %>%
-  filter(!is.na(launch_speed))
+  filter(!is.na(launch_speed), description == "hit_into_play")
 
 ff_total_24 <- diaz_ff_24_hardhit %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
@@ -1376,13 +1401,13 @@ diaz_sl_24 <- diaz %>%
   filter(game_year == "2024",
          pitch_type == "SL")
 
-freq_sl_24_tot <- nrow(filter(diaz_sl_24, !is.na(launch_speed)))
-freq_sl_24_hardhit <- nrow(filter(diaz_sl_24, hardhit == 1))
+freq_sl_24_tot <- nrow(filter(diaz_sl_24, !is.na(launch_speed), description == "hit_into_play"))
+freq_sl_24_hardhit <- nrow(filter(diaz_sl_24, description == "hit_into_play", hardhit == 1))
 
 percent_sl_24_hardhit <- round((freq_sl_24_hardhit / freq_sl_24_tot) * 100, 1)
 
 diaz_sl_24_hardhit <- diaz_sl_24 %>%
-  filter(!is.na(launch_speed))
+  filter(!is.na(launch_speed), description == "hit_into_play")
 
 sl_total_24 <- diaz_sl_24_hardhit %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
@@ -1416,13 +1441,13 @@ diaz_ff_25 <- diaz %>%
   filter(game_year == "2025",
          pitch_type == "FF")
 
-freq_ff_25_tot <- nrow(filter(diaz_ff_25, !is.na(launch_speed)))
-freq_ff_25_hardhit <- nrow(filter(diaz_ff_25, hardhit == 1))
+freq_ff_25_tot <- nrow(filter(diaz_ff_25, !is.na(launch_speed), description == "hit_into_play"))
+freq_ff_25_hardhit <- nrow(filter(diaz_ff_25, description == "hit_into_play", hardhit == 1))
 
 percent_ff_25_hardhit <- round((freq_ff_25_hardhit / freq_ff_25_tot) * 100, 1)
 
 diaz_ff_25_hardhit <- diaz_ff_25 %>%
-  filter(!is.na(launch_speed))
+  filter(!is.na(launch_speed), description == "hit_into_play")
 
 ff_total_25 <- diaz_ff_25_hardhit %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
@@ -1456,13 +1481,13 @@ diaz_sl_25 <- diaz %>%
   filter(game_year == "2025",
          pitch_type == "SL")
 
-freq_sl_25_tot <- nrow(filter(diaz_sl_25, !is.na(launch_speed)))
-freq_sl_25_hardhit <- nrow(filter(diaz_sl_25, hardhit == 1))
+freq_sl_25_tot <- nrow(filter(diaz_sl_25, !is.na(launch_speed), description == "hit_into_play"))
+freq_sl_25_hardhit <- nrow(filter(diaz_sl_25, description == "hit_into_play", hardhit == 1))
 
 percent_sl_25_hardhit <- round((freq_sl_25_hardhit / freq_sl_25_tot) * 100, 1)
 
 diaz_sl_25_hardhit <- diaz_sl_25 %>%
-  filter(!is.na(launch_speed))
+  filter(!is.na(launch_speed), description == "hit_into_play")
 
 sl_total_25 <- diaz_sl_25_hardhit %>%
   ggplot(aes(x = plate_x, y = plate_z)) +
@@ -1510,8 +1535,6 @@ plot_22
 plot_24
 plot_25
 ```
-
-**PERCENTAGES ARE OFF FOR THE PLOTS - NEED TO UPDATE!**
 
 {explain plot and DT}.
 
