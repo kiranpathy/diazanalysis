@@ -10,7 +10,7 @@ date: "2025-04-13"
 
 This project will be an analysis into Edwin Diaz across 2022, 2024, and 2025 seasons (so far), looking into his decline in effectiveness and his changing approach. His 2022 season was historical, and while his metrics from 2024 indicate a strong campaign, his 2025 season has gotten off to a troubling start (NOTE: this is being made with data as of 4/13/2025, 5.2 IP / 6 G into the season for Diaz).
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 library(plyr)
 library(dplyr)
 library(devtools)
@@ -41,7 +41,7 @@ Before discussing, it's important to look into some relevant ready-available met
 
 First load in data from the three seasons in question and define strike zone dimensions and making proper adjustments (make it from pitcher's view).
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 diaz <- read_csv("diaz.csv")
 
 heat_colors_interpolated <- colorRampPalette(paletteer_d("RColorBrewer::RdBu", 
@@ -67,7 +67,7 @@ diaz_25 <- diaz %>%
 
 Now, onto the plots. First, I want to visualize Diaz's different pitches. We can see that he only has thrown a fastball and slider over these three years (can see this by doing `unique(diaz$pitch_type)`).
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #2022
 diaz_ff_22 <- diaz_22
 
@@ -350,14 +350,15 @@ plot_25 <- ggarrange(ff_total_25,
   annotate_figure(plot, top = text_grob("Diaz 2025 (Contour)", 
                                         color = "red", face = "italic", size = 14))
 
-plot_22
-plot_24
-plot_25
+final_plot <- ggarrange(plot_22, plot_24, plot_25,
+                        nrow = 3, ncol = 1)
+
+final_plot
 ```
 
 One interesting takeaway from these plots is the differentiation in the pitch usage. Diaz is less reliant on his slider compared to his successful 2022 season, and his fastball has begun to creep up higher in the zone. With the fastball climbing up in the zone, his approach seems to be changing - instead of tunneling effectively in the left half of the zone with fastball and slider, he seems to just be trying to blow fastballs by hitters up and away. I also think that this shift is related to changes in control. Diaz has noticeably been working from behind in the count much more often as of late - from [Baseball Savant](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb&season=2025), Diaz's FirstPitchStrike% by season looks like 71.4% (2022), 63.0% (2024), and 50.0% (2025, through April 12 games). Since this is a big dropoff and can explain the tendency for more fastballs, I'd like to look at how he has approached 0-0 counts and if there's a difference over the years.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #set counts variable in new df
 diaz <- diaz %>%
   mutate(count = paste0(balls, "-", strikes))
@@ -650,14 +651,15 @@ plot_25 <- ggarrange(ff_total_25_00,
   annotate_figure(plot, top = text_grob("Diaz 2025, 0-0", 
                                         color = "red", face = "italic", size = 14))
 
-plot_22
-plot_24
-plot_25
+final_plot <- ggarrange(plot_22, plot_24, plot_25,
+                        nrow = 3, ncol = 1)
+
+final_plot
 ```
 
 The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, after 2022 his fastball seemed to be trending up in the zone further and his slider in 2025 is hitting the wrong side of the plate (inside on RHH). {What it shows}.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #Overall chase/whiff stats
 diaz <- diaz %>%
   mutate(whiff = case_when(
@@ -693,7 +695,7 @@ diaz_summary %>%
   )
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #Look at whiffs and chases
 #chases
 diaz_00 <- diaz %>%
@@ -952,13 +954,14 @@ plot_25 <- ggarrange(ff_total_25_00,
   annotate_figure(plot, top = text_grob("Diaz 2025, 0-0 Chases", 
                                         color = "red", face = "italic", size = 14))
 
-plot_22
-plot_24
-plot_25
+final_plot <- ggarrange(plot_22, plot_24, plot_25,
+                        nrow = 3, ncol = 1)
+
+final_plot
   
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #whiffs in 0-0
 diaz_00 <- diaz %>%
   filter(count == "0-0")
@@ -1216,12 +1219,13 @@ plot_25 <- ggarrange(ff_total_25_00,
   annotate_figure(plot, top = text_grob("Diaz 2025, 0-0 Whiffs", 
                                         color = "red", face = "italic", size = 14))
 
-plot_22
-plot_24
-plot_25
+final_plot <- ggarrange(plot_22, plot_24, plot_25,
+                        nrow = 3, ncol = 1)
+
+final_plot
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #Overall chase/whiff stats
 diaz <- diaz %>%
   mutate(count_type = case_when(
@@ -1256,7 +1260,7 @@ Something major that should be focused on is Pitch Tempo, or the time between pi
 
 One more area to check out is [HardHit%](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb#statcast-statistics)\*. In 2022, Diaz's HardHit% was 38.1% (49th percentile), in 2024 it was 30.3% (97th percentile), and in 2025 thus far it is 53.3% (9th percentile). The spike in 2024 and even the middling performance in 2022 compared with the rough start in 2025 begs the question of where this hard contact is coming from.
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 diaz <- diaz %>%
   mutate(hardhit = case_when(
     launch_speed >= 95 ~ 1,
@@ -1279,7 +1283,7 @@ diaz_summary %>%
   )
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #hardhit scatterplot - color by hard hit
 diaz_ff_22 <- diaz %>%
   filter(game_year == "2022",
@@ -1534,9 +1538,10 @@ plot_25 <- ggarrange(ff_total_25,
   annotate_figure(plot, top = text_grob("Diaz 2025, HardHit", 
                                         color = "red", face = "italic", size = 14))
 
-plot_22
-plot_24
-plot_25
+final_plot <- ggarrange(plot_22, plot_24, plot_25,
+                        nrow = 3, ncol = 1)
+
+final_plot
 ```
 
 {explain plot and DT}.

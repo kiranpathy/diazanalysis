@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.16)  16 APR 2025 22:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.4.16)  16 APR 2025 22:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -487,31 +487,11 @@ LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 10
 (/Users/kiranpathy/Library/TinyTeX/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<DiazAnalysis_files/figure-latex/unnamed-chunk-3-1.pdf, id=4, 469.755pt x 325.215pt>
+<DiazAnalysis_files/figure-latex/unnamed-chunk-3-1.pdf, id=4, 722.7pt x 1300.86pt>
 File: DiazAnalysis_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (type pdf)
 <use DiazAnalysis_files/figure-latex/unnamed-chunk-3-1.pdf>
 Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-3-1.pdf  used on input line 106.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-3-2.pdf, id=5, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-3-2.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-3-2.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-3-2.pdf  used on input line 107.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-3-3.pdf, id=6, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-3-3.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-3-3.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-3-3.pdf  used on input line 108.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 106--109
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 106--109
-[]
- []
-
+(pdftex.def)             Requested size: 361.36014pt x 650.44826pt.
 
 
 [1
@@ -519,176 +499,83 @@ Underfull \hbox (badness 10000) in paragraph at lines 106--109
 {/Users/kiranpathy/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}]
 
 [2 <./DiazAnalysis_files/figure-latex/unnamed-chunk-3-1.pdf>]
-
-[3 <./DiazAnalysis_files/figure-latex/unnamed-chunk-3-2.pdf>]
-<DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf, id=42, 469.755pt x 325.215pt>
+<DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf, id=29, 722.7pt x 1300.86pt>
 File: DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf Graphic file (type pdf)
 <use DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf  used on input line 126.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-4-2.pdf, id=43, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-4-2.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-4-2.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-4-2.pdf  used on input line 127.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-4-3.pdf, id=44, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-4-3.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-4-3.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-4-3.pdf  used on input line 128.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--129
-[][]
- []
+Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf  used on input line 124.
+(pdftex.def)             Requested size: 361.36014pt x 650.44826pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--129
-[]
- []
+[3]
 
+[4 <./DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf>]
 
+LaTeX Warning: Float too large for page by 53.80846pt on input line 202.
 
-[4 <./DiazAnalysis_files/figure-latex/unnamed-chunk-3-3.pdf>]
-
-[5 <./DiazAnalysis_files/figure-latex/unnamed-chunk-4-1.pdf>]
-
-[6 <./DiazAnalysis_files/figure-latex/unnamed-chunk-4-2.pdf>]
-
-LaTeX Warning: Float too large for page by 53.80846pt on input line 206.
-
-<DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf, id=78, 469.755pt x 325.215pt>
+<DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf, id=45, 722.7pt x 1300.86pt>
 File: DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (type pdf)
 <use DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf  used on input line 208.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-6-2.pdf, id=79, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-6-2.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-6-2.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-6-2.pdf  used on input line 209.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-6-3.pdf, id=80, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-6-3.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-6-3.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-6-3.pdf  used on input line 210.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 208--211
-[][]
- []
+Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf  used on input line 204.
+(pdftex.def)             Requested size: 361.36014pt x 650.44826pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--211
-[]
- []
+[5]
 
-
-
-[7 <./DiazAnalysis_files/figure-latex/unnamed-chunk-4-3.pdf>]
-
-[8 <./DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf>]
-
-[9 <./DiazAnalysis_files/figure-latex/unnamed-chunk-6-2.pdf>]
-<DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf, id=115, 469.755pt x 325.215pt>
+[6 <./DiazAnalysis_files/figure-latex/unnamed-chunk-6-1.pdf>]
+<DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf, id=61, 722.7pt x 1300.86pt>
 File: DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf Graphic file (type pdf)
 <use DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 212.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-7-2.pdf, id=116, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-7-2.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-7-2.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-7-2.pdf  used on input line 213.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-7-3.pdf, id=117, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-7-3.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-7-3.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-7-3.pdf  used on input line 214.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf  used on input line 206.
+(pdftex.def)             Requested size: 361.36014pt x 650.44826pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--215
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 212--215
-[]
- []
+LaTeX Warning: Float too large for page by 53.80846pt on input line 278.
 
 
 
-[10 <./DiazAnalysis_files/figure-latex/unnamed-chunk-6-3.pdf>]
+[7 <./DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf>]
 
-[11 <./DiazAnalysis_files/figure-latex/unnamed-chunk-7-1.pdf>]
+LaTeX Warning: Float too large for page by 53.80846pt on input line 375.
 
-LaTeX Warning: Float too large for page by 53.80846pt on input line 286.
-
-
-
-[12 <./DiazAnalysis_files/figure-latex/unnamed-chunk-7-2.pdf>]
-
-LaTeX Warning: Float too large for page by 53.80846pt on input line 383.
-
-<DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf, id=154, 469.755pt x 325.215pt>
+<DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf, id=76, 722.7pt x 1300.86pt>
 File: DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf Graphic file (type pdf)
 <use DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf  used on input line 385.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-10-2.pdf, id=155, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-10-2.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-10-2.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-10-2.pdf  used on input line 386.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-<DiazAnalysis_files/figure-latex/unnamed-chunk-10-3.pdf, id=156, 469.755pt x 325.215pt>
-File: DiazAnalysis_files/figure-latex/unnamed-chunk-10-3.pdf Graphic file (type pdf)
-<use DiazAnalysis_files/figure-latex/unnamed-chunk-10-3.pdf>
-Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-10-3.pdf  used on input line 387.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 385--388
-[][]
- []
+Package pdftex.def Info: DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf  used on input line 377.
+(pdftex.def)             Requested size: 361.36014pt x 650.44826pt.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 385--388
-[]
- []
+[8]
 
-
-
-[13 <./DiazAnalysis_files/figure-latex/unnamed-chunk-7-3.pdf>]
-
-[14 <./DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf>]
-
-[15 <./DiazAnalysis_files/figure-latex/unnamed-chunk-10-2.pdf>]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 395.
+[9 <./DiazAnalysis_files/figure-latex/unnamed-chunk-10-1.pdf>]
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 385.
 (/Users/kiranpathy/Library/TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-[16{/Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc} <./DiazAnalysis_files/figure-latex/unnamed-chunk-10-3.pdf>]
+[10{/Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 
-[17]
+[11]
 
-[18]
+[12]
 
-[19] (./DiazAnalysis.aux)
+[13] (./DiazAnalysis.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-03-26>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 12938 strings out of 471607
- 210604 string characters out of 5520169
+ 12862 strings out of 471607
+ 206118 string characters out of 5520169
  616610 words of memory out of 5000000
- 39288 multiletter control sequences out of 15000+600000
+ 39218 multiletter control sequences out of 15000+600000
  655533 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  89i,9n,93p,358b,465s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb></Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb></Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr17.pfb></Users/kiranpathy/Library/TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on DiazAnalysis.pdf (19 pages, 357214 bytes).
+Output written on DiazAnalysis.pdf (13 pages, 326868 bytes).
 PDF statistics:
- 264 PDF objects out of 1000 (max. 8388607)
- 200 compressed objects within 2 object streams
- 26 named destinations out of 1000 (max. 500000)
- 100 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 158 PDF objects out of 1000 (max. 8388607)
+ 120 compressed objects within 2 object streams
+ 20 named destinations out of 1000 (max. 500000)
+ 50 words of extra memory for PDF output out of 10000 (max. 10000000)
 
