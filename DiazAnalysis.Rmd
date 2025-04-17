@@ -721,10 +721,7 @@ diaz_summary <- diaz %>%
   arrange(game_year, count_type, pitch_type)
 
 diaz_summary %>%
-  gt() %>%
-  tab_header(
-    title = "Diaz Pitch Results by Count Type"
-  )
+  kable(caption = "Diaz Pitch Results by Count Type")
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
@@ -1257,7 +1254,21 @@ final_plot <- ggarrange(plot_22, plot_24, plot_25,
 final_plot
 ```
 
-{Comment on the two plots and DT}.
+Takeaways from the data and plots:
+
+-   Most strikingly, the 0-0 count chase and whiff rate fall off in 2025 is stark, with the fastball not having generated any chases or whiffs at all in 0-0 counts and slider significantly down
+
+-   Across 2022 and 2024, his fastball and slider chase rates in 0-0 are similar, with the fastball chase being marginally more effective in 2024 and slider more effective in 2025
+
+-   Based on the plots, the 2022 fastball whiff rate in 0-0 comes from fastballs more up in the zone; with declining velocity, this may be a reason for this declining trend
+
+-   The slider chases and whiffs come from low and away according to plots; the fastball chases were most prevalent on the outer/up part in 2022
+
+-   When ahead and even in the count, the slider has remained the most effective pitch in terms of chase and whiff rates; 2022 saw the highest rates for each of these, 2024 was better ahead in the count than 2025 but 2025 has so far been better when even
+
+-   His fastball behind in counts has consistently been less successful in chase/whiff scenarios, but 2025 shows the worst performance in these spaces; 2024 was the best, with 2022 behind this
+
+Overall: declining slider effectiveness, notably when ahead; fastball not generating as many whiffs, and not effective when behind at all.
 
 One more area to check out is HardHit%. The improvement in 2024 and middling performance in 2022 compared with the rough start in 2025 begs the question of where this hard contact is coming from.
 
@@ -1278,10 +1289,7 @@ diaz_summary <- diaz %>%
   arrange(game_year, count_type, pitch_type)
 
 diaz_summary %>%
-  gt() %>%
-  tab_header(
-    title = "Diaz Hard Hit by Count Type"
-  )
+  kable(caption = "Diaz Hard Hit by Count Type")
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
