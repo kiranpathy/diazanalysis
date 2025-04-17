@@ -388,7 +388,7 @@ final_plot <- ggarrange(plot_22, plot_24, plot_25,
 final_plot
 ```
 
-One interesting takeaway from these plots is the differentiation in the pitch usage. Diaz is less reliant on his slider compared to his successful 2022 season, and his fastball has begun to creep up higher in the zone. With the fastball climbing up in the zone, his approach seems to be changing - instead of tunneling effectively in the left half of the zone with fastball and slider, he seems to just be trying to blow fastballs by hitters up and away. I also think that this shift is related to changes in control, relating back to the previously mentioned statistics regarding his decrease in FirstPitchStrike%. I'd like to look at how he has approached 0-0 counts and if there's a difference over the years.
+Diaz is less reliant on his slider compared to 2022, and his fastball has begun to creep up higher in the zone. With the fastball climbing up in the zone, instead of tunneling effectively in the left half of the zone with fastball and slider, he seems to just be trying to blow fastballs by hitters up and away. This likely doesn't work as well with the decrease in velocity as mentioned before. I also think that this shift is related to changes in control, relating back to the decrease FirstPitchStrike% as mentioned before.
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #set counts variable in new df
@@ -689,7 +689,7 @@ final_plot <- ggarrange(plot_22, plot_24, plot_25,
 final_plot
 ```
 
-The trend of increasing fastballs shows up here still, and you can see his fastball gravitating upwards in these 0-0 counts. While 2025 is really tough to judge, after 2022 his fastball seemed to be trending up in the zone further and his slider in 2025 is hitting the wrong side of the plate (inside on RHH). {What it shows}.
+The trend of increasing fastballs shows up here still, and his fastball is moving upwards in these 0-0 counts. 2025 is tough to judge, but after 2022 his fastball seemed to be trending up in the zone further and his slider in 2025 is hitting the wrong side of the plate (inside on RHH).
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 #Overall chase/whiff stats
@@ -1258,8 +1258,6 @@ final_plot
 ```
 
 {Comment on the two plots and DT}.
-
-{PLOT?}.
 
 One more area to check out is HardHit%. The improvement in 2024 and middling performance in 2022 compared with the rough start in 2025 begs the question of where this hard contact is coming from.
 
