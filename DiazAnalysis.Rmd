@@ -3,14 +3,12 @@ title: "Edwin Diaz Pitcher Analysis"
 output:
   pdf_document: default
   html_document: default
-date: "2025-04-13"
+date: "2025-04-18"
 ---
 
 # Intro
 
-This project will be an analysis into Edwin Diaz across 2022, 2024, and 2025 seasons (so far), looking into his decline in effectiveness and his changing approach. His 2022 season was historical, and while his metrics from 2024 indicate a strong campaign, his 2025 season has gotten off to a troubling start (NOTE: this is being made with data as of 4/16/2025, 6.2 IP / 7 G into the season for Diaz).
-
-**NEED TO UPDATE DIAZ DATA!**
+This project will be an analysis into Edwin Diaz across 2022, 2024, and 2025 seasons (so far), looking into his decline in effectiveness and his changing approach. His 2022 season was historical, and while his metrics from 2024 indicate a strong campaign, his 2025 season has gotten off to a troubling start (NOTE: this is being made with data through 4/17/2025, 7.2 IP / 8 G into the season for Diaz).
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 library(plyr)
@@ -47,7 +45,7 @@ Before discussing, it's important to look into some relevant ready-available met
 
     -   2024 - Fastball = 97.5 MPH, Slider = 89.6 MPH
 
-    -   2025 - Fastball = 96.4 MPH, Slider = 88.3 MPH
+    -   2025 - Fastball = 96.3 MPH, Slider = 88.2 MPH
 
 -   Over the past 3 seasons, [Diaz's FirstPitchStrike% has declined](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb#plate_discipline). FirstPitchStrike% by year:
 
@@ -55,7 +53,7 @@ Before discussing, it's important to look into some relevant ready-available met
 
     -   2024 - 63.0%
 
-    -   2025 - 45.2%
+    -   2025 - 45.7%
 
 -   Over the past 3 seasons, [Diaz's HardHit% has increased](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb#statcast-statistics). Defining HardHit% as percent of balls in play hit 95MPH or more, by year:
 
@@ -63,7 +61,7 @@ Before discussing, it's important to look into some relevant ready-available met
 
     -   2024 - 30.3%
 
-    -   2025 - 53.3%
+    -   2025 - 50.0%
 
 -   Over the past 3 seasons (with the implementation of the Pitch Clock in 2023, the season Diaz missed with injury), [Diaz has had to speed up his time between pitches](https://baseballsavant.mlb.com/savant-player/edwin-diaz-621242?stats=statcast-r-pitching-mlb#pitch-tempo). With Average Pitch Tempo defined as average time between pitches, and Fast% being the percentage of pitches with 15 seconds or less between pitches (data below displays statistics for pitches with no runners on base):
 
@@ -723,7 +721,7 @@ diaz_summary <- diaz %>%
   arrange(game_year, count_type, pitch_type)
 
 diaz_summary %>%
-  kable(caption = "Diaz Pitch Results by Count Type")
+  kable(caption = "Diaz Whiff and Chase by Count Type")
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
@@ -1260,8 +1258,6 @@ Takeaways from the data and plots:
 
 -   Most strikingly, the 0-0 count chase and whiff rate fall off in 2025 is stark, with the fastball not having generated any chases or whiffs at all in 0-0 counts and slider significantly down
 
--   Across 2022 and 2024, his fastball and slider chase rates in 0-0 are similar, with the fastball chase being marginally more effective in 2024 and slider more effective in 2025
-
 -   Based on the plots, the 2022 fastball whiff rate in 0-0 comes from fastballs more up in the zone; with declining velocity, this may be a reason for this declining trend
 
 -   The slider chases and whiffs come from low and away according to plots; the fastball chases were most prevalent on the outer/up part in 2022
@@ -1571,8 +1567,14 @@ Overall: increasing HardHit% when behind in the count especially; slider has bee
 
 # Summary/Recommendations
 
--   Bring the fastball down and tunnel with the slider
+Putting together these observations, it is clear that Diaz has had a decline in performance over several key areas over the past three seasons. Based on the findings discussed regarding his pitch locations, 0-0 count performance, Chase%, Whiff%, and HardHit%, along with other previously discussed key metrics, there are some important findings and recommendations that Diaz may benefit from in shifting his approach.
 
--   Practice pacing, especially early in counts
+-   Work on bringing the fastball down in the zone; with decreased velocity, staying at the top of the zone is more dangerous
 
--   Get the slider back to the left side of the plate - this is where chases come from
+-   Ensure that the slider is able to be located not too high (where it seems to get hit harder), and can remain on the outer edge of the zone; for this reason, tunneling with the fastball on the left side of the plate would be ideal, which brings the fastball down as well
+
+-   Across all counts, though 0-0 especially when possible, try to be more effective at mixing in sliders; this can increase the opportunity for chases and whiffs that is much harder when the hitter can instead sit on the fastball
+
+-   Locating in 0-0 counts and staying in the zone early is necessary; when ahead in the count he is successful with the slider, but when behind he is fighting an uphill battle, especially with the fastball as hitters can more easily "predict" it coming
+
+-   When possible, practice pacing as to eliminate this as a factor; while it might not be a significant impact on his performance, the numbers suggest a radical shift in timing between pitches, and ensuring that this is not disrupting performance is key
