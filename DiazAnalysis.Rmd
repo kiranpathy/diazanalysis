@@ -1555,7 +1555,19 @@ final_plot <- ggarrange(plot_22, plot_24, plot_25,
 final_plot
 ```
 
-{explain plot and DT}.
+Takeaways from data and plots:
+
+-   Even though the 2025 sample size is very small, the disparity with HardHit% on both fastball and sliders when behind in the count is significant - he was much better at inducing weaker contact behind in the count in 2022 compared to 2024 and 2025
+
+-   When even in the count, the slider has remained the less hard hit pitch of the two, consistent over all seasons
+
+-   Again with small sample size, but when ahead he has been good in 2025 about not drawing hard contact on either pitch - 2022 ahead in the count was not optimal for HardHit% but 2024 he was good (second to the small 2025 sample size)
+
+-   From plots, as fastball has gravitated upwards the HardHit% has gone up - could be related to both location and the declining velocity - can't blow the pitches past guys as easily
+
+-   For slider, 2022 seemed to be the highest HardHit% - he stayed in the middle of the plate for a lot of those balls in play, which likely was a factor - 2024 he elevated a little but tried working sides of the plate
+
+Overall: increasing HardHit% when behind in the count especially; slider has been more averse to hard hit over three seasons, especially in even counts; ahead in the count he seems to be limiting harder contact; fastball harder hit as it rises (possibly with less velo) and potentially when slider is too middle.
 
 # Summary/Recommendations
 
