@@ -10,6 +10,8 @@ date: "2025-04-13"
 
 This project will be an analysis into Edwin Diaz across 2022, 2024, and 2025 seasons (so far), looking into his decline in effectiveness and his changing approach. His 2022 season was historical, and while his metrics from 2024 indicate a strong campaign, his 2025 season has gotten off to a troubling start (NOTE: this is being made with data as of 4/16/2025, 6.2 IP / 7 G into the season for Diaz).
 
+**NEED TO UPDATE DIAZ DATA!**
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=10, fig.height=18}
 library(plyr)
 library(dplyr)
